@@ -1,0 +1,67 @@
+﻿<Window x:Class="Ex28_WPFTusindfrydGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ex28_WPFTusindfrydGUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" MinWidth="200"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 6">
+                    <Button Margin="0 0 6 0" Padding="5" Content="New Employee" Height="30" Width="112" Click="NewEmployee_Click"></Button>
+                    <Button Padding="5" Content="Delete Employee" Height="30" Width="112" Click="DeleteEmployee_Click"></Button>
+                </StackPanel>
+
+                <ListBox Height="350" ItemsSource="{Binding EmployeesVM}" SelectedItem="{Binding currentEmployee}" SelectionChanged="Listbox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding ImgPath}" Width="40" Height="40" Margin="10 0 10 0"/>
+                                <TextBlock Text="{Binding Name}" FontSize="13" FontWeight="Bold" VerticalAlignment="Center" />
+                            </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" HorizontalAlignment="Left">
+
+            <StackPanel Margin="10 0 0 30" Orientation="Vertical" VerticalAlignment="Center">
+                <Image Height="80" Margin="0 0 0 10" Source="{Binding currentEmployee.ImgPath}"/>
+                <Label Height="25" Margin="5">Name</Label>
+                <Label Height="25" Margin="5">Age</Label>
+                <Label Height="25" Margin="5">CPR-nr.</Label>
+                <Label Height="25" Margin="5">Image Path</Label>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <StackPanel Margin="10 0 0 30" Orientation="Vertical">
+                
+                <StackPanel Height="80" VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 10">
+                    <Label FontSize="16" FontWeight="Bold" Margin="0 24 0 0">Employee Profile</Label>
+                </StackPanel>
+                <TextBox Width="150" Height="25" Padding="2" Margin="5" Text="{Binding currentEmployee.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Width="150" Height="25" Padding="2" Margin="5" Text="{Binding currentEmployee.Age, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Width="150" Height="25" Padding="2" Margin="5" Text="{Binding currentEmployee.Cpr, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <StackPanel Width="150" Height="25"  Margin="5" Orientation="Horizontal">
+                    <TextBox x:Name="tbImagePath" Text="{Binding currentEmployee.ImgPath, UpdateSourceTrigger=PropertyChanged}" Width="100" Height="25" Padding="2"></TextBox>
+                    <Button Content="Open" Width="45" Margin="5 0 0 0 " Click="OpenFile_Click"></Button>
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+
+
+
+    </Grid>
+</Window>

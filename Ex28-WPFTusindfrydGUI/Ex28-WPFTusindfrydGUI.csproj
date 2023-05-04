@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Ex28_WPFTusindfrydGUI</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="View\1.png" />
+    <None Remove="View\2.png" />
+    <None Remove="View\3.png" />
+    <None Remove="View\4.png" />
+    <None Remove="View\5.png" />
+    <None Remove="View\pb.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\1.png" />
+    <Resource Include="View\2.png" />
+    <Resource Include="View\3.png" />
+    <Resource Include="View\4.png" />
+    <Resource Include="View\5.png" />
+    <Resource Include="View\pb.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="employees.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
